@@ -1,0 +1,24 @@
+{
+  "name": "qna-fullstackapplication",
+  "version": "1.0.0",
+  "description": "Ironhack Project #2: Full-stack Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sperkn/QnA-FullStackApplication.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sperkn/QnA-FullStackApplication/issues"
+  },
+  "homepage": "https://github.com/sperkn/QnA-FullStackApplication#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "hbs": "^4.0.1",
+    "mongoose": "^5.2.2"
+  }
+}
