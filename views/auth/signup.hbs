@@ -1,0 +1,41 @@
+<h2> Join Us! </h2>
+
+{{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+{{/if}}
+
+<form action="/signup" method="post">
+  <div>
+    <label for="firstName-input"> First Name </label>
+    <input type="text" name="firstName" id="firstName-input"
+      placeholder="">
+  </div>
+  <div>
+    <label for="lastName-input"> Last Name </label>
+    <input type="text" name="lastName" id="lastName-input"
+      placeholder="">
+  </div>
+  <div>
+    <label for="email-input"> Email </label>
+    <input type="email" name="email" id="email-input"
+      placeholder="">
+  </div>
+
+  <div>
+    <label for="password-input"> Password </label>
+    <input type="password" name="password" id="password-input"
+      placeholder="">
+    <span><p>Minimum 8 characters</p></span>
+  </div>
+
+  <button> Join Now </button>
+</form>
+
+<p>
+  Already have a LinkedIn or Sperk account?
+  <a href="/">
+    Log in 
+  </a>
+</p>

@@ -1,0 +1,36 @@
+<h2> Log In </h2>
+
+{{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+{{/if}}
+
+<p>
+  <a href="/auth/linkedin">
+    Log in with LinkedIn
+  </a>
+</p>
+
+<form action="/login" method="post">
+  <div>
+    <label for="email-input"> Email </label>
+    <input type="email" name="email" id="email-input"
+      placeholder="">
+  </div>
+
+  <div>
+    <label for="password-input"> Password </label>
+    <input type="password" name="password" id="password-input"
+      placeholder="">
+  </div>
+
+  <button> Log In </button>
+</form>
+
+<p>
+  Don't have a LinkedIn account? No problem, you can sign up with us! However,you'll only be able to ask, not answer, questions.
+  <a href="/signup">
+    Join Now
+  </a>
+</p>

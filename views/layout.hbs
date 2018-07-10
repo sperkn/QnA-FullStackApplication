@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <header>
+      <h1> <a href="/"> {{title}} </a> </h1>
+       {{#if isUserLoggedIn }}
+        <li> <a href="/logout"> Log Out </a> </li>
+      {{else}}
+      <li> <a href="/signup"> Sign Up </a> </li>
+      <li> <a href="/login"> Log In </a> </li>
+      {{/if}}
+    </header>
+    {{{body}}}
+    <footer>
+      <p> Made with &hearts; by Sperkn Labs, LLC. </p>
+    </footer>
+    <script src='/javascripts/script.js' />
+  </body>
+</html>
