@@ -15,8 +15,13 @@ router.use((req, res, next) => {
     return;
   }
 
-  res.redirect('/student-dashboard');
+  res.redirect('/login');
 });
 
+router.get('/student-dashboard', (req, res, next) => {
+  res.render('/student/student-dashboard', {
+    errorMessage: ''
+  });
+});
 
 module.exports = router;

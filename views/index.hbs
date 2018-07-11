@@ -1,14 +1,46 @@
 <!-- views/index.hbs -->
 {{#if isUserLoggedIn }}
-  <p> Hello {{ currentUserInfo.name }}, ask a question...</p>
+  <p> Hello {{ currentUserInfo.firstName }}, ask a question...</p>
   <form>
-    <select name="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="fiat">Fiat</option>
-      <option value="audi">Audi</option>
+    <select name="industry" multiple> 
+      <option value="law">Law</option>
+      <option value="engineering">Engineering</option>
+      <option value="science">Science</option>
+      <option value="math">Math</option>
     </select>
-    
-    <input type="search" name="googlesearch">
-  </form>
-{/if}}
+    <div>
+      <input type="search" name="googlesearch" placeholder="Is it necessary to get a degree in X to become Y?">
+      <button>Ask</button>
+    </div>
+  </form>     
+
+{{else}}
+<p>
+  <a href="/auth/linkedin">
+    Log in with LinkedIn
+  </a>
+</p>
+
+<form action="/login" method="post">
+  <div>
+    <label for="email-input"> Email </label>
+    <input type="email" name="email" id="email-input"
+      placeholder="">
+  </div>
+
+  <div>
+    <label for="password-input"> Password </label>
+    <input type="password" name="password" id="password-input"
+      placeholder="">
+  </div>
+
+  <button> Log In </button>
+</form>
+
+<p>
+  Don't have a LinkedIn account? No problem, you can sign up with us! However,you'll only be able to ask, not answer, questions.
+  <a href="/signup">
+    Join Now
+  </a>
+</p>
+{{/if}}

@@ -2,8 +2,6 @@ const express      = require('express');
 const mongoose     = require('mongoose');
 const bcrypt       = require('bcrypt');
 const passport     = require("passport");
-const session      = require('express-session');
-const MongoStore   = require('connect-mongo')(session);
 
 const User = require('../models/user');
 
@@ -11,12 +9,6 @@ const router = express.Router();
 const bcryptSalt = 10;
 
 const auth = express();
-
-router.get('/', (req, res, next) => {
-  res.render('auth/login', {
-    errorMessage: ''
-  });
-});
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup', {
@@ -73,6 +65,12 @@ router.post('/signup', (req, res, next) => {
   });
 });
 
+router.get('/login', (req, res, next) => {
+  res.render('auth/login', {
+    errorMessage: ''
+  });
+});
+
 //log-in post route
 router.post('/login', (req, res, next) => {
   const {email, password} = req.body;
@@ -100,30 +98,24 @@ router.post('/login', (req, res, next) => {
     // }
 
     req.session.currentUser = theUser;
-    res.redirect('/home');
+    res.redirect('/');
   });
 });
 
-auth.use(session({
-  secret: 'ask and you shall receive',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 600000 },
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
-  })
-}));
-
-auth.use((req, res, next) => {
-  if (req.session.currentUser) {
-    res.locals.currentUserInfo = req.session.currentUser;
-    res.locals.isUserLoggedIn = true;
-  } else {
-    res.locals.isUserLoggedIn = false;
+router.get('/logout', (req, res, next) => {
+  if (!req.session.currentUser) {
+    res.redirect('/');
+    return;
   }
 
-  next();
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    res.redirect('/');
+  });
 });
 
 module.exports = router;
