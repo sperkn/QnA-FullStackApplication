@@ -11,6 +11,53 @@ router.use((req, res, next) => {
     next();
     return;
   }
-
   res.redirect('/login');
 });
+
+router.get('/post/:id', (req, res, next) => {
+  const questionId = req.params.id;
+
+  Question.findById(questionId, (err, theQuestion) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    res.render('question/post', {
+      thePost: theQuestion
+    });
+  });
+});
+
+router.get('/ask', (req, res, next) => {
+
+  const user_id = req.session.currentUser._id; 
+  const {industry, question} = req.body;
+
+  console.log("te1");
+  const questionSubmission = {
+    user_id,
+    industry,
+    question
+  };
+
+  console.log("yo");
+
+  console.log( questionSubmission );
+
+  const userQuestion = new Question(questionSubmission);
+  userQuestion.save((err) => {
+    if (err) {
+      console.log(err);
+      res.render('/', {
+        errorMessage: 'Something went wrong. Try again later.'
+      });
+      return;
+    }
+    res.redirect("/dashboard");
+  });
+});
+
+
+
+module.exports = router;

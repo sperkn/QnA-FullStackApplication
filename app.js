@@ -70,9 +70,11 @@ app.locals.title = 'Sperk - Connecting You With The Experts';
 //route connections
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
-const studentRoutes = require('./routes/student');
+const userRoutes = require('./routes/user');
+const questionRoutes = require('./routes/question');
 app.use('/', index);
 app.use('/', authRoutes);
-app.use('/', studentRoutes);
+app.use('/', userRoutes);
+app.use('/', questionRoutes);
 
 module.exports = app;

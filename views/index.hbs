@@ -1,6 +1,13 @@
 <!-- views/index.hbs -->
 {{#if isUserLoggedIn }}
   <p> Hello {{ currentUserInfo.firstName }}, ask a question...</p>
+
+   {{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+  {{/if}}
+  
   <form>
     <select name="industry" multiple> 
       <option value="law">Law</option>
@@ -9,8 +16,8 @@
       <option value="math">Math</option>
     </select>
     <div>
-      <input type="search" name="googlesearch" placeholder="Is it necessary to get a degree in X to become Y?">
-      <button>Ask</button>
+      <input type="search" name="question" placeholder="Is it necessary to get a degree in X to become Y?">
+      <button><a href="/ask">Ask</a></button>
     </div>
   </form>     
 

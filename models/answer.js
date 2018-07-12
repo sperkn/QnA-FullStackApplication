@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const answerSchema = new Schema({
   answer: {type: String, lowercase: true, required: true},
-  user_id: {type : ObjectId, ref: 'Users', required: true},
-  question_id: {type : ObjectId, ref: 'Questions', required: true},
+  user_id: {type : Schema.Types.ObjectId, ref: 'Users', required: true},
+  question_id: {type : Schema.Types.ObjectId, ref: 'Questions', required: true},
   likes: {type: Number, default: 0},
 });
 
