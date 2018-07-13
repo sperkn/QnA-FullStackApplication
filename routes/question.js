@@ -6,6 +6,9 @@ const Answer = require('../models/answer');
 
 const router = express.Router();
 
+// const user1Routes = require('./user');
+// router.use('/', user1Routes);
+
 router.use((req, res, next) => {
   if (req.session.currentUser) {
     next();
@@ -30,22 +33,17 @@ router.get('/post/:id', (req, res, next) => {
 });
 
 router.get('/ask', (req, res, next) => {
-
   const user_id = req.session.currentUser._id; 
-  const {industry, question} = req.body;
+  const {industry, question} = req.query;
 
-  console.log("te1");
   const questionSubmission = {
     user_id,
     industry,
     question
   };
 
-  console.log("yo");
-
-  console.log( questionSubmission );
-
   const userQuestion = new Question(questionSubmission);
+
   userQuestion.save((err) => {
     if (err) {
       console.log(err);
@@ -54,10 +52,8 @@ router.get('/ask', (req, res, next) => {
       });
       return;
     }
-    res.redirect("/dashboard");
+    res.redirect('/dashboard');
   });
 });
-
-
 
 module.exports = router;

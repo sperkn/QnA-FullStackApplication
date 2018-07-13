@@ -4,8 +4,9 @@
 // pertaining to profile/settings 
 
 const express = require('express');
-// const mongoose     = require('mongoose');
-const User = require('../models/user');
+const mongoose     = require('mongoose');
+// const User = require('../models/user');
+const Question = require('../models/question');
 // const passport     = require("passport");
 
 const router = express.Router();
@@ -21,8 +22,22 @@ router.use((req, res, next) => {
 
 
 router.get('/dashboard', (req, res, next) => {
-
-  res.render('user/dashboard');
+  let user = req.session.currentUser._id;
+  Question.find({user_id: user}, (err, userQuestions) => { 
+    if (err) {
+      console.log(err);
+      next(err);
+      return;
+    }
+    res.render('user/dashboard', {
+      questions: userQuestions
+    });
+  });
 });
+
+router.get('/profile', (req, res, next) => {
+  res.render('user/profile');
+});
+
 
 module.exports = router;

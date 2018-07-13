@@ -9,15 +9,15 @@
           <th class="text-center">Likes</th>
           <th class="text-center">Status</th>
         </tr>
-      </thead>
+      </thead>=
       <tbody>
-        {{#each questionsAsked}}
+        {{#each questions}}
           <tr>
-            <td class="text-center"> <a href="{{this._id}}"> {{ this.question }} </a></td>
-            <td class="text-center"> {{ this.industry }} </td>
-            <td class="text-center"> {{ this.answers }} </td>
-            <td> {{ this.likes }} </td>
-            <td> {{ this.status }} </td>
+            <td align="left" class="text-center"> <a href="post/{{this._id}}"> {{ this.question }} </a></td>
+            <td align="center" class="text-center"> {{ this.industry }} </td>
+            <td align="center" class="text-center"> {{ this.answers }} </td>
+            <td align="center" class="text-center"> {{ this.likes }} </td>
+            <td align="center" class="text-center"> {{ this.status }}</td>
           </tr>
         {{/each}}
       </tbody>
