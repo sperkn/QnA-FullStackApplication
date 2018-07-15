@@ -66,17 +66,17 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth/login', {
+  res.render('index', {
     errorMessage: ''
   });
 });
 
 //log-in post route
-router.post('/login', (req, res, next) => {
+router.post('/', (req, res, next) => {
   const {email, password} = req.body;
 
   if (email === '' || password === '') {
-    res.render('auth/login', {
+    res.render('index', {
       errorMessage: 'Enter both email and password to log in.'
     });
     return;
@@ -84,7 +84,7 @@ router.post('/login', (req, res, next) => {
 
   User.findOne({ email }, (err, theUser) => {
     if (err || theUser === null || !bcrypt.compareSync(password, theUser.password)) {
-      res.render('auth/login', {
+      res.render('index', {
         errorMessage: `The email/password is invalid.`
       });
       return;

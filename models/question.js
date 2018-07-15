@@ -10,6 +10,7 @@ const questionSchema = new Schema({
   user_id: {type : Schema.Types.ObjectId, ref: 'Users', required:true},
   industry: {type: String, set: capitalize, required: true},
   question: {type: String, set: capitalize, required: true},
+  answers: {type: Number, default: 0},
   likes: {type: Number, default: 0},
   status: {type: String, enum : ['OPEN', 'CLOSED'], default : 'OPEN'}
 });

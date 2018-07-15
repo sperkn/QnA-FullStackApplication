@@ -29,10 +29,15 @@ router.get('/dashboard', (req, res, next) => {
       next(err);
       return;
     }
+    console.log(userQuestions);
     res.render('user/dashboard', {
       questions: userQuestions
     });
   });
+});
+
+router.get('/feed', (req, res, next) => {
+  res.render('user/feed');
 });
 
 router.get('/profile', (req, res, next) => {

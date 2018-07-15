@@ -6,9 +6,6 @@ const Answer = require('../models/answer');
 
 const router = express.Router();
 
-// const user1Routes = require('./user');
-// router.use('/', user1Routes);
-
 router.use((req, res, next) => {
   if (req.session.currentUser) {
     next();

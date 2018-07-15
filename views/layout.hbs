@@ -6,19 +6,31 @@
   </head>
   <body>
     <header>
-      {{!-- <h1> <a href="/"> {{title}} </a> </h1> --}}
+      {{!-- LOGO IMAGE <h1> <a href="/"> {{title}} </a> </h1> --}}
       {{#if isUserLoggedIn }}
-        <img src="{{ currentUserInfo.avatar }}" class=""/>
-        <li> <a href="/"> Home </a> </li>
-        <li> <a href="/dashboard"> Dashboard </a> </li>
-        <li> <a href="/logout"> Log Out </a> </li>
+        <nav class="nav-container">
+          <li> <a href="/"> Home </a> </li>
+          <li> <a href="/dashboard"> Dashboard </a> </li>
+          <li> <a href="/feed"> Feed </a> </li>
+          <li> <a href="/logout"> Log Out </a> </li>
+          <img src="{{ currentUserInfo.avatarUrl }}" id="avatar-img"/>
+        </nav>
         {{else}}
+        {{!-- <nav class="nav-container">
           <li> <a href="/signup"> Sign Up </a> </li>
-          <li> <a href="/login"> Log In </a> </li>
+          <li> <a href="/"> Log In </a> </li>
+        </nav> --}}
       {{/if}}
     </header>
     {{{body}}}
     <footer>
+      <ul>
+        <li>About</li>
+        <li>Team</li>
+        <li>Careers</li>
+        <li>Terms</li>
+        <li>Help</li>
+      </ul>
       <p> Made with &hearts; by Sperkn Labs, LLC. </p>
     </footer>
     <script src='/javascripts/script.js' />

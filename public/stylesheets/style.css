@@ -1,0 +1,111 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, blockquote,
+pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* general styles */
+
+body {
+  background-color: #4F86C6;
+}
+
+header {
+  background-color: #FFF;
+}
+
+footer {
+  background-color: #FFF;
+}
+
+/* layout.hbs styles */
+
+#avatar-img {
+  object-fit: cover;
+  border-radius:50%;
+  width: 50px;
+  height: 50px;
+}
+
+.nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+
+nav li {
+   list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+}
+
+nav img {
+  display: block;
+  padding: 1em;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* log-in/index.hbs styles */
+
+#login-container {
+border: #4FB0C6 2px solid;
+border-radius: 15px;
+background-color: #FFF;
+width: 150px;
+height: 150px;
+display: flex;
+justify-content: center;
+}
