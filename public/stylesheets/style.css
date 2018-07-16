@@ -49,11 +49,11 @@ table {
 /* general styles */
 
 body {
-  background-color: #4F86C6;
+  background-color: #FFF;
 }
 
 header {
-  background-color: #FFF;
+  background-color: #4F86C6;
 }
 
 footer {
@@ -101,11 +101,41 @@ footer {
 /* log-in/index.hbs styles */
 
 #login-container {
-border: #4FB0C6 2px solid;
+border: #4FB0C6 3px solid;
 border-radius: 15px;
 background-color: #FFF;
-width: 150px;
-height: 150px;
+width: 350px;
+/* height: 250px; */
 display: flex;
+flex-direction: column;
 justify-content: center;
+}
+
+#footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* dashboard styles */
+
+#dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#question-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 30%;
 }
