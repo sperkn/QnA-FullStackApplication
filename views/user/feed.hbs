@@ -1,0 +1,28 @@
+<div id="dashboard-container">
+  <h2>Community Questions</h2>
+</div>
+  {{#each questions}}
+  <div id="questions-container">
+    <h4>{{ this.industry }}</h4>
+    <p><a href="post/{{this._id}}"> "{{ this.question }}?" </a></p>
+    <p>{{this.firstName}} {{this.lastName}}</p>
+    <div id="stats-container">
+      <table class="">
+        <thead>
+          <tr>
+            <th class="">Answers</th>
+            <th class="">Likes</th>
+            <th class="">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center" class=""> {{ this.answers }} </td>
+            <td align="center" class=""> {{ this.likes }} </td>
+            <td align="center" class=""> {{ this.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {{/each}}

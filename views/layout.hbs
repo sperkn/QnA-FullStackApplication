@@ -6,7 +6,7 @@
   </head>
   <body>
     <header>
-      {{!-- LOGO IMAGE <h1> <a href="/"> {{title}} </a> </h1> --}}
+      {{!-- LOGO IMAGE DON'T DElETE <h1> <a href="/"> {{title}} </a> </h1> --}}
       {{#if isUserLoggedIn }}
         <nav class="nav-container">
           <li> <a href="/"> Home </a> </li>
@@ -16,10 +16,10 @@
           <img src="{{ currentUserInfo.avatarUrl }}" id="avatar-img"/>
         </nav>
         {{else}}
-        {{!-- <nav class="nav-container">
+        <nav class="nav-container">
           <li> <a href="/signup"> Sign Up </a> </li>
-          <li> <a href="/"> Log In </a> </li>
-        </nav> --}}
+          {{!-- <li> <a href="/"> Log In </a> </li> --}}
+        </nav>
       {{/if}}
     </header>
     {{{body}}}
