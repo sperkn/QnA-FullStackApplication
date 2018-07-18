@@ -3,8 +3,9 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe, blockquote,
-pre, a, abbr, acronym, address, big, cite, code,
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -62,11 +63,11 @@ footer {
 
 /* LAYOUT.HBS styles */
 
-#avatar-img {
+#avatar-profile {
   object-fit: cover;
   border-radius:50%;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
 }
 
 .nav-container {
@@ -165,9 +166,26 @@ footer {
 }
 
 #questions-container {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 30%;
+  justify-content: center;
+  width: 33%;
+  align-items: center;
+}
+
+/* FEED styles */
+
+.stats-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+.avatar-question {
+  object-fit: cover;
+  border-radius:50%;
+  width: 30px;
+  height: 30px;
 }

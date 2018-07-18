@@ -14,7 +14,7 @@ const app = express();
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/QnA-WebApp')
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -65,7 +65,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.locals.title = 'Sperk - Connecting You With Experts';
+app.locals.title = 'sperq - Connecting You With Experts';
 
 //route connections
 const index = require('./routes/index');

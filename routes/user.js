@@ -38,7 +38,11 @@ router.get('/dashboard', (req, res, next) => {
 router.get('/feed', (req, res, next) => {
   // let user = req.session.currentUser._id; 
   // populate('user_id', 'firstName')
-  Question.find({}).populate({path: 'user_id', select: 'firstName -_id'}).sort({createdAt:-1}).exec( (err, communityQuestions) => { 
+  // path: 'user_id', select: 'firstName -_id'
+  Question.find()
+  .populate({path: 'user_id', select: 'firstName avatarUrl -_id'})
+  .sort({createdAt:-1})
+  .exec( (err, communityQuestions) => { 
     if (err) {
       console.log(err);
       next(err);

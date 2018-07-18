@@ -5,7 +5,8 @@
   "description": "Ironhack Project #2: Full-stack Application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "start-dev": "nodemon ./bin/www",
     "dev": "DEBUG=qna-fullstackapplication:* nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -3,20 +3,24 @@
 </div>
   {{#each questions}}
   <div id="questions-container">
+    {{#with user_id}}
+      <img src="{{ this.avatarUrl }}" class="avatar-question"/>
+      <p>{{this.firstName}}</p>
+    {{/with}}
     <h4>{{ this.industry }}</h4>
     <p><a href="post/{{this._id}}"> "{{ this.question }}?" </a></p>
-    <p>{{this.firstName}} {{this.lastName}}</p>
+    {{!-- <p>{{user_id.firstName}}</p> --}}
     <div id="stats-container">
       <table class="">
         <thead>
-          <tr>
+          <tr class="stats-items">
             <th class="">Answers</th>
             <th class="">Likes</th>
             <th class="">Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="stats-items">
             <td align="center" class=""> {{ this.answers }} </td>
             <td align="center" class=""> {{ this.likes }} </td>
             <td align="center" class=""> {{ this.status }}</td>
