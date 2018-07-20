@@ -11,14 +11,14 @@ const Question = require('../models/question');
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-  if (req.session.currentUser) {
-    next();
-    return;
-  }
+// router.use((req, res, next) => {
+//   if (req.session.currentUser) {
+//     next();
+//     return;
+//   }
 
-  res.redirect('/login');
-});
+//   res.redirect('/login');
+// });
 
 
 router.get('/dashboard', (req, res, next) => {
@@ -36,23 +36,29 @@ router.get('/dashboard', (req, res, next) => {
 });
 
 router.get('/feed', (req, res, next) => {
-  // let user = req.session.currentUser._id; 
-  // populate('user_id', 'firstName')
-  // path: 'user_id', select: 'firstName -_id'
   Question.find()
-  .populate({path: 'user_id', select: 'firstName avatarUrl -_id'})
+  .populate('user_id')
   .sort({createdAt:-1})
-  .exec( (err, communityQuestions) => { 
-    if (err) {
-      console.log(err);
-      next(err);
-      return;
-    }
-    console.log(communityQuestions);
+  .then(communityQuestions => {
     res.render('user/feed', {
       questions: communityQuestions
-    });
-  });
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    next(err);
+    return;
+  })
+  // .exec( (err, communityQuestions) => { 
+  //   if (err) {
+  //     console.log(err);
+  //     next(err);
+  //     return;
+  //   }
+  //   res.render('user/feed', {
+  //     questions: communityQuestions
+  //   });
+  // });
 });
 
 router.get('/profile', (req, res, next) => {

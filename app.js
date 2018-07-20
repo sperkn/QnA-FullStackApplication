@@ -14,7 +14,7 @@ const app = express();
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect('mongodb://localhost/QnA-WebApp')
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -50,7 +50,11 @@ app.use((req, res, next) => {
 
   next();
 });
-// app.use(mongoose());
+
+// Passport Middleware Configuration
+const passport = require('./routes/auth');
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Express View engine setup
 hbs.registerPartials(__dirname + '/views/partials');

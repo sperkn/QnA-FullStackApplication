@@ -95,6 +95,20 @@ nav img {
 
 /* LOG-IN / INDEX.HBS styles */
 
+.logo {
+  font-family: fantasy;
+  font-size: 50px;
+  font-weight: bolder;
+  padding-left: 30px;
+  /* border: 2px black solid; */
+  display: block;
+  width: 60px;
+  padding-top: 10px;
+  border-radius: 70%;
+  color: #4FB0C6;
+  border: #4FB0C6 3px solid;
+  margin-left: 30px;
+}
 button a {
   text-decoration: none;
   display: block;
@@ -151,10 +165,16 @@ footer {
 }
 
 #ask-input {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width:100%;
+}
+
+.ask-bar {
+  padding-left: 10px;
+  width: 50%;
 }
 
 /* DASHBOARD styles */

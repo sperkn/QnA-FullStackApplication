@@ -1,7 +1,10 @@
+require('dotenv').config();
+
 const express      = require('express');
 const mongoose     = require('mongoose');
 const bcrypt       = require('bcrypt');
 const passport     = require("passport");
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 
 const User = require('../models/user');
 
@@ -16,7 +19,7 @@ router.get('/signup', (req, res, next) => {
   });
 });
 
-//sign-up post route
+//sign-up post route NORMAL USER
 router.post('/signup', (req, res, next) => {
   const {firstName, lastName, email, password} = req.body;
 
@@ -65,13 +68,76 @@ router.post('/signup', (req, res, next) => {
   });
 });
 
+// route for log-in page
 router.get('/login', (req, res, next) => {
   res.render('index', {
     errorMessage: ''
   });
 });
 
-//log-in post route
+// middleware for using LinkedIn API to login with linkedin credentials
+passport.serializeUser(function(user, cb) { cb(null, user); });
+passport.deserializeUser(function(obj, cb) { cb(null, obj);  });
+
+passport.use(new LinkedInStrategy({
+  clientID: process.env.LINKEDIN_CLIENT_ID,
+  clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+  callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
+  scope: ['r_emailaddress', 'r_basicprofile'],
+  state: true
+}, function(accessToken, refreshToken, profile, done) {
+  // asynchronous verification, for effect...
+  process.nextTick(function () {
+    const {
+      id:linkedinId, 
+      "first-name":firstName,
+      "last-name":lastName, 
+      "email-address":email,
+      headline,
+      positions:position,
+      "public-profile-url":profileUrl,
+      "picture-url":avatarUrl} = profile._json;
+      
+    let newUser = new User({
+      linkedinId,
+      firstName,
+      lastName,
+      email,
+      headline,
+      position,
+      profileUrl,
+      avatarUrl,
+      account: "EXPERT"
+    });
+
+    User.find({'linkedinId': linkedinId}, (err, userCheck)=> {
+      if (err) { res.status(500).send('Something broke!') }
+      if (!userCheck.length) {
+          newUser.save(newUser, (err) => {
+              return done(err, newUser);
+          })
+        }
+      else {return done(err, newUser);}
+    })
+  });
+}));
+
+// routes to handle linkedin log-in
+router.get('/auth/linkedin',
+  passport.authenticate('linkedin'),
+  function(req, res){
+    // The request will be redirected to LinkedIn for authentication, so this
+    // function will not be called.
+});
+
+router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+    successRedirect: '/user/dashboard',
+    failureRedirect: '/login',
+    // failureFlash: true
+})
+);
+
+//log-in post route normal user
 router.post('/', (req, res, next) => {
   const {email, password} = req.body;
 

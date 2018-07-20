@@ -6,18 +6,19 @@
 
   <div id="ask-input">
   <form action="/ask">
-    <select name="industry" multiple>
+    <select name="industry">
       <option value="law">Law</option>
       <option value="engineering">Engineering</option>
       <option value="science">Science</option>
       <option value="math">Math</option>
     </select>
     <span>
-      <input type="search" name="question" placeholder="Is it necessary to get a degree in X to become Y?">
+      <input type="search" name="question" placeholder="Is it necessary to get a degree in X to become Y?" class="ask-bar">
       <button>Ask</button>
     </span>
   </form>
   </div>
+
 {{else}}
 <div id="container">
 <div id="login-container">
@@ -30,11 +31,10 @@
   {{/if}}
 
   <div id="login-items">
-    <button>
-        <a href="/auth/linkedin">
-          Log in with LinkedIn
-        </a>
-      </button>
+    <img>
+      <a href="/auth/linkedin">
+        <img src="/images/sign-in-small-default.png"> 
+      </a>
     <form action="/" method="post">
       <div>
         <label for="email-input"> Email </label>
