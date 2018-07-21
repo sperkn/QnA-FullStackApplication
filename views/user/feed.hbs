@@ -5,10 +5,10 @@
   <div id="questions-container">
     {{#with user_id}}
       <img src="{{ this.avatarUrl }}" class="avatar-question"/>
-      <p>{{this.firstName}}</p>
+      <h4>{{this.firstName}}</h4>
     {{/with}}
     <h4>{{ this.industry }}</h4>
-    <p><a href="post/{{this._id}}"> "{{ this.question }}?" </a></p>
+    <p><a href="community/question/{{this._id}}"> "{{ this.question }}?" </a></p>
     {{!-- <p>{{user_id.firstName}}</p> --}}
     <div id="stats-container">
       <table class="">

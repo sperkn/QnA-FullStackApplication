@@ -1,0 +1,61 @@
+{{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+  {{/if}}
+  <h4>My Question about {{thePost.industry}}</h4>
+  <div id="questions-container">
+    <p> {{ thePost.question }} </p>
+    <p> {{ thePost.createdAt }} </p>
+    <p><a href="/delete/{{thePost._id}}">Delete</a></p>
+    <div id="stats-container">
+      <table class="">
+        <thead>
+          <tr>
+            <th class="">Answers</th>
+            <th class="">Likes</th>
+            <th class="">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center" class=""> {{ thePost.answers }} </td>
+            <td align="center" class=""> {{ thePost.likes }} </td>
+            <td align="center" class=""> {{ thePost.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{{#if theAnswers}}
+<div id="dashboard-container">
+  <h2>Answers</h2>
+</div>
+{{/if}}
+
+{{#each theAnswers}}
+  <div id="questions-container">
+    {{#with user_id}}
+      <img src="{{ this.avatarUrl }}" class="avatar-question"/>
+      <h3>{{this.firstName}} says:</h3>
+    {{/with}}
+    <p>"{{ this.answer }}"</p>
+    <div id="stats-container">
+      <table class="">
+        <thead>
+          <tr>
+            <th class="">Likes</th>
+            <th class="">Flag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center" class=""> {{ this.likes }} </td>
+            <td align="center" class="">&#9873</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{{/each}}

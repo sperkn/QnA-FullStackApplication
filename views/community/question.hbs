@@ -5,10 +5,12 @@
   {{/if}}
 
   <div id="questions-container">
-    <h4>My Question about {{thePost.industry}}</h4>
+      <img src="{{ thePost.user_id.avatarUrl }}" class="avatar-question"/>
+      <h4>{{thePost.user_id.firstName}}</h4>
+    <h4>{{thePost.industry}}</h4>
+
     <p> {{ thePost.question }} </p>
     <p> {{ thePost.createdAt }} </p>
-    <p><a href="/delete/{{thePost._id}}">Delete</a></p>
     <div id="stats-container">
       <table class="">
         <thead>
@@ -16,6 +18,7 @@
             <th class="">Answers</th>
             <th class="">Likes</th>
             <th class="">Status</th>
+            <th class="">Flag</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +26,7 @@
             <td align="center" class=""> {{ thePost.answers }} </td>
             <td align="center" class=""> {{ thePost.likes }} </td>
             <td align="center" class=""> {{ thePost.status }}</td>
+            <td align="center" class="">&#9873</td>
           </tr>
         </tbody>
       </table>

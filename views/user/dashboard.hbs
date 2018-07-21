@@ -1,10 +1,16 @@
 <div id="dashboard-container">
   <h2>My Questions</h2>
 </div>
+
   {{#each questions}}
   <div id="questions-container">
+    {{#if errorMessage}}
+      <p class="error-message">
+      {{ errorMessage }}
+      </p>
+    {{/if}}
     <h4>{{ this.industry }}</h4>
-    <p><a href="post/{{this._id}}"> "{{ this.question }}?" </a></p>
+    <p><a href="question/{{this._id}}"> "{{ this.question }}?" </a></p>
     <p><a href="/delete/{{this._id}}">Delete</a></p>
     <div id="stats-container">
       <table class="">
