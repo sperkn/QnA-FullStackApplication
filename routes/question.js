@@ -38,22 +38,50 @@ router.get('/ask', (req, res, next) => {
     })
 });
 
+// NEED TO FIX!!!!!
+// route for showing the question and any/all answers associated
 router.get('/post/:id', (req, res, next) => {
   const questionId = req.params.id;
 
-  Question.findById(questionId)
-    .then(question => {
-      res.render('question/post', {
-        thePost: question
-      })
+  Answer.find({question_id: questionId})
+    .then(answers => {
+      // console.log(answers)
+      if(answers.length===0) {
+        Question.findById(questionId)
+          .then(question => {
+          console.log(question)
+          res.render('question/post', {
+            thePost: question})
+          })
+          .catch(err => {
+          console.log(err);
+          next(err);
+          return;
+          })
+        }
+      else {
+        console.log("im here3");
+        Question.findById(questionId)
+          .then(question => {
+            res.render('question/post', {
+            thePost: question,
+            theAnswers: answers})
+          })
+          .catch(err => {
+            console.log(err);
+            next(err);
+            return;
+          })
+      }
     })
-    .catch(err => {
+    .catch(err =>{
       console.log(err);
       next(err);
       return;
     })
 });
 
+// route for deleting a question
 router.get('/delete/:id', (req, res, next) => {
   const questionId = req.params.id;
 

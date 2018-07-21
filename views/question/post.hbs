@@ -29,15 +29,17 @@
     </div>
   </div>
 
+{{#if theAnswers}}
 <div id="dashboard-container">
-  <h2>My Questions</h2>
+  <h2>Answers</h2>
 </div>
+{{/if}}
 
-{{#each answers}}
+{{#each theAnswers}}
   <div id="questions-container">
     {{#with user_id}}
       <img src="{{ this.avatarUrl }}" class="avatar-question"/>
-      <p>{{this.firstName}} says:</p>
+      <h3>{{this.firstName}} says:</h3>
     {{/with}}
     <p>"{{ this.answer }}"</p>
     <div id="stats-container">
@@ -45,13 +47,13 @@
         <thead>
           <tr>
             <th class="">Likes</th>
-            <th></th>
+            <th class="">Flag</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td align="center" class=""> {{ this.likes }} </td>
-            <td align="center" class="">Flag</td>
+            <td align="center" class="">&#9873</td>
           </tr>
         </tbody>
       </table>
