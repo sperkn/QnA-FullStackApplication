@@ -11,14 +11,14 @@ const Question = require('../models/question');
 
 const router = express.Router();
 
-// router.use((req, res, next) => {
-//   if (req.session.currentUser) {
-//     next();
-//     return;
-//   }
+router.use((req, res, next) => {
+  if (req.session.currentUser) {
+    next();
+    return;
+  }
 
-//   res.redirect('/login');
-// });
+  res.redirect('/login');
+});
 
 
 router.get('/dashboard', (req, res, next) => {
@@ -49,16 +49,6 @@ router.get('/feed', (req, res, next) => {
     next(err);
     return;
   })
-  // .exec( (err, communityQuestions) => { 
-  //   if (err) {
-  //     console.log(err);
-  //     next(err);
-  //     return;
-  //   }
-  //   res.render('user/feed', {
-  //     questions: communityQuestions
-  //   });
-  // });
 });
 
 router.get('/profile', (req, res, next) => {

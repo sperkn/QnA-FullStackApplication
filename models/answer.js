@@ -11,6 +11,7 @@ const answerSchema = new Schema({
   user_id: {type : Schema.Types.ObjectId, ref: 'Users', required: true},
   question_id: {type : Schema.Types.ObjectId, ref: 'Questions', required: true},
   likes: {type: Number, default: 0},
+  status: {type: String, enum : ['OPEN', 'FLAGGED'], default : 'OPEN'}
 });
 
 answerSchema.set('timestamps', true);
