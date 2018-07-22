@@ -21,9 +21,9 @@ router.use((req, res, next) => {
 });
 
 // route for asking a question(and saving to the db)
-router.get('/ask', (req, res, next) => {
+router.post('/ask', (req, res, next) => {
   const user_id = req.session.currentUser._id; 
-  const {industry, question} = req.query;
+  const {industry, question} = req.body;
 
   const questionSubmission = {
     user_id,
@@ -32,7 +32,6 @@ router.get('/ask', (req, res, next) => {
   };
 
   const userQuestion = new Question(questionSubmission);
-
 
   userQuestion.save()
     .then(res.redirect('/dashboard'))
@@ -66,7 +65,6 @@ router.get('/question/:id', (req, res, next) => {
           })
         }
       else {
-        console.log("im here3");
         Question.findById(questionId)
           .then(question => {
             res.render('user/question', {

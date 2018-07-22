@@ -15,10 +15,10 @@
       <table class="">
         <thead>
           <tr>
-            <th class="">Answers</th>
-            <th class="">Likes</th>
-            <th class="">Status</th>
-            <th class="">Flag</th>
+            <th align="center" class="">Answers</th>
+            <th align="center" class="">Likes</th>
+            <th align="center" class="">Status</th>
+            <th align="center" class="">Flag</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
             <td align="center" class=""> {{ thePost.answers }} </td>
             <td align="center" class=""> {{ thePost.likes }} </td>
             <td align="center" class=""> {{ thePost.status }}</td>
-            <td align="center" class="">&#9873</td>
+            <td align="center" class="">&#9872</td>
           </tr>
         </tbody>
       </table>
@@ -50,17 +50,25 @@
       <table class="">
         <thead>
           <tr>
-            <th class="">Likes</th>
-            <th class="">Flag</th>
+            <th align="center" class="">Likes</th>
+            <th align="center" class="">Flag</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td align="center" class=""> {{ this.likes }} </td>
-            <td align="center" class="">&#9873</td>
+            <td align="center" class="">&#9872</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 {{/each}}
+
+<form action="/answer" id="answer-form" method="POST">
+<textarea rows="10" cols="60" name="answer" placeholder="Enter answer here...">
+</textarea>
+<input type="hidden" id="" name="question_id" value="{{thePost._id}}">
+<div><button>Answer</button></div>
+{{!-- <div><input type="submit"></div> --}}
+</form>

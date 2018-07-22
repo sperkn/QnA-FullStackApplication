@@ -55,4 +55,27 @@ router.get('/community/question/:id', (req,res, next) =>{
       })
 })
 
+router.post('/answer', (req, res, next) => {
+  const user_id = req.session.currentUser._id;
+  const {answer, question_id} = req.body;
+
+  const answerSubmission = {
+    answer,
+    user_id,
+    question_id
+  };
+
+  const userAnswer = new Answer(answerSubmission);
+
+  userAnswer.save()
+    .then(res.redirect(`/community/question/${question_id}`))
+    .catch(err => {
+      console.log(err);
+      res.render('/', {
+      errorMessage: 'Something went wrong. Try again later.'
+      });
+      return;
+    })
+})
+
 module.exports = router;
