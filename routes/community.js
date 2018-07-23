@@ -11,7 +11,7 @@ router.use((req, res, next) => {
     next();
     return;
   }
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 router.get('/community/question/:id', (req,res, next) =>{
@@ -19,6 +19,7 @@ router.get('/community/question/:id', (req,res, next) =>{
 
     Answer.find({question_id: questionId})
       .populate('user_id')
+      .sort({likes:-1})
       .then(answers => {
         if(answers.length===0) {
           Question.findById(questionId)
@@ -77,5 +78,7 @@ router.post('/answer', (req, res, next) => {
       return;
     })
 })
+
+router.get
 
 module.exports = router;

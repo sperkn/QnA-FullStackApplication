@@ -2,12 +2,17 @@
   <p class="error-message">
     {{ errorMessage }}
   </p>
-  {{/if}}
+{{/if}}
+
   <h4>My Question about {{thePost.industry}}</h4>
   <div id="questions-container">
     <p> {{ thePost.question }} </p>
     <p> {{ thePost.createdAt }} </p>
-    <p><a href="/delete/{{thePost._id}}">Delete</a></p>
+    {{#if theAnswers}}
+
+    {{else}}
+      <p><a href="/delete/{{thePost._id}}"> <img src ="/images/baseline-delete-24px.svg"></a></p>
+    {{/if}}
     <div id="stats-container">
       <table class="">
         <thead>
@@ -41,6 +46,8 @@
       <h3>{{this.firstName}} says:</h3>
     {{/with}}
     <p>"{{ this.answer }}"</p>
+    <p>{{this.createdAt}}</p>
+    <p><a href="/answer/like/{{this._id}}"><img src="/images/baseline-thumb_up-24px.svg"></a></p>
     <div id="stats-container">
       <table class="">
         <thead>

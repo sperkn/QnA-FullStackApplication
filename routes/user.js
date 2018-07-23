@@ -50,6 +50,7 @@ router.get('/question/:id', (req, res, next) => {
   const questionId = req.params.id;
 
   Answer.find({question_id: questionId})
+    .populate('user_id')
     .then(answers => {
       // console.log(answers)
       if(answers.length===0) {
