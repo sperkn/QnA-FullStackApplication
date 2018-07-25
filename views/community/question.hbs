@@ -6,10 +6,10 @@
 
   <div id="questions-container">
     <img src="{{ thePost.user_id.avatarUrl }}" class="avatar-question"/>
-    <h4>{{thePost.user_id.firstName}}</h4>
-    <h4>{{thePost.industry}}</h4>
+    <h4>{{ thePost.user_id.firstName }}</h4>
+    <h4>{{ thePost.industry }}</h4>
     <p> {{ thePost.question }} </p>
-    <p><a href="/question/like/{{thePost._id}}"><img src="/images/baseline-thumb_up-24px.svg"></a></p>
+    <p><a href="community/like/{{thePost._id}}"><img src="/images/baseline-thumb_up-24px.svg"></a></p>
     <p> {{ thePost.createdAt }} </p>
     <div id="stats-container">
       <table class="">
@@ -43,10 +43,10 @@
   <div id="questions-container">
     {{#with user_id}}
       <img src="{{ this.avatarUrl }}" class="avatar-question"/>
-      <h3>{{this.firstName}} says:</h3>
+      <h4>{{this.firstName}} says:</h4>
     {{/with}}
     <p>"{{ this.answer }}"</p>
-    <p><a href="/answer/like/{{this._id}}"><img src="/images/baseline-thumb_up-24px.svg"></a></p>
+    <p><a href="answer/like/{{this._id}}"><img src="/images/baseline-thumb_up-24px.svg"></a></p>
     <div id="stats-container">
       <table class="">
         <thead>
@@ -73,3 +73,15 @@
 <div><button>Answer</button></div>
 {{!-- <div><input type="submit"></div> --}}
 </form>
+
+{{!-- <form action="sendAnswer()" id="answer-form" method="POST">
+<textarea rows="10" cols="60" name="answer" placeholder="Enter answer here...">
+</textarea>
+<input type="hidden" id="" name="question_id" value="{{thePost._id}}">
+<div><button>Answer</button></div>
+</form>
+
+<form onsubmit="sendAnswer('{{thePost._id}}')">
+    <input id="speaktoJS" type="text" name="speakToRoute" placeholder="Whatcha got to say?">
+    <input type="submit" value="Add!">
+</form> --}}

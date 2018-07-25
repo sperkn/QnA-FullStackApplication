@@ -79,6 +79,4 @@ router.post('/answer', (req, res, next) => {
     })
 })
 
-router.get
-
 module.exports = router;

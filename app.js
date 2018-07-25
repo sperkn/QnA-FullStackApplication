@@ -52,6 +52,21 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  // Adds user domain to be accessed from hbs to be used with axios on heroku 
+  req.userDomain = process.env.DOMAIN;
+  if(req.user){
+  User.findById(req.user._id)
+    .then(user => {
+      req.user = user;
+    });
+  }
+  // Allows request to be accessed from handlebars
+  app.locals.req = req;
+  // console.log(req.url)
+  next();
+});
+
 // Passport Middleware Configuration
 const passport = require('./routes/auth');
 // app.use(passport.initialize());
@@ -77,12 +92,12 @@ const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const communityRoutes = require('./routes/community');
-// const questionRoutes = require('./routes/question');
+const likesRoutes = require('./routes/likes');
 
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/', userRoutes);
 app.use('/', communityRoutes);
-// app.use('/', questionRoutes);
+app.use('/', likesRoutes);
 
 module.exports = app;

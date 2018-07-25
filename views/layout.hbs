@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+      {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"> --}}
+      <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <header>
@@ -12,8 +13,15 @@
           <li> <a href="/"> Home </a> </li>
           <li> <a href="/dashboard"> Dashboard </a> </li>
           <li> <a href="/feed"> Feed </a> </li>
-          <li> <a href="/logout"> Log Out </a> </li>
-          <img src="{{ currentUserInfo.avatarUrl }}" id="avatar-profile"/>
+          {{!-- <li> <a href="/logout"> Log Out </a> </li> --}}
+          <div class="dropdown-nav">
+            <button class="dropbtn-nav"> <img src="{{ currentUserInfo.avatarUrl }}" id="avatar-profile"/></button>
+            <div class="dropdown-content-nav">
+              <a href="#">My Profile</a>
+              <a href="#">Settings</a>
+              <a href="/logout">Log Out</a>
+            </div>
+          </div>
         </nav>
         {{else}}
         <nav class="nav-container">
@@ -23,6 +31,7 @@
       {{/if}}
     </header>
     {{{body}}}
+    <div id="domainName" style="display:none">http://localhost:3000/</div>
     <script src='/javascripts/script.js' />
   </body>
 </html>
