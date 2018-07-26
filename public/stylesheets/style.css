@@ -50,12 +50,13 @@ table {
 /* GENERAL styles */
 
 body {
-  background-color: #FFF;
+  background: url(/images/background-image.png) no-repeat center center fixed; 
+  background-size: cover;
 }
 
-header {
+/* header {
   background-color: #4F86C6;
-}
+} */
 
 footer {
   background-color: #4F86C6;
@@ -66,7 +67,7 @@ a {
 }
 
 .layout-items {
-  padding-top: 1.25em;
+  padding-top: 1em;
 }
 .center-items {
   text-align: center;
@@ -96,9 +97,9 @@ a {
 
 #avatar-profile {
   object-fit: cover;
-  border-radius:50%;
-  width: 35px;
-  height: 35px;
+  border-radius: 0.1em;
+  width: 0.5em;
+  height: 0.5em;
 }
 
 /* .nav-container {
