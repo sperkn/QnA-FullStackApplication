@@ -12,7 +12,7 @@ const questionSchema = new Schema({
   question: {type: String, set: capitalize, required: true},
   answers: {type: Number, default: 0},
   likes: {type: Number, default: 0},
-  status: {type: String, enum : ['OPEN', 'CLOSED'], default : 'OPEN'}
+  status: {type: String, enum : ['open', 'closed'], default : 'open'}
 });
 
 questionSchema.set('timestamps', true);

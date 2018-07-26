@@ -22,6 +22,11 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
+//Initialize HBS Helpers 
+hbs.registerHelper('ifNotEquals', function (arg1, arg2, options) { 
+  return (arg1 != arg2) ? options.fn(this) : options.inverse(this); 
+});
+
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
