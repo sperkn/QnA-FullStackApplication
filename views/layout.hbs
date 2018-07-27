@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
     <link rel='stylesheet' href='/stylesheets/style.css'>
   </head>
-  <body>
+  <body id="background">
     <header>
       {{!-- <a href="/"><img src="/images/sperq-logo.png"> </a> --}}
       {{!-- {{#if isUserLoggedIn }} --}}
@@ -45,73 +45,10 @@
           </div>
         </div>
         {{else}}
-        <div class="pure-u-2-4 pure-u-md-2-4 pure-u-lg-2-4 pure-u-xl-2-4"></div>
-        <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4 center-items layout-items">Sign Up</div>
+        <div class="pure-u-13-24 pure-u-md-13-24 pure-u-lg-13-24 pure-u-xl-13-24"></div>
+        <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4 center-items layout-items"><a href="/signup"><button type="" class="pure-button pure-button-primary">Sign Up</button></a></div>
         {{/if}}
       </div>
-      {{!-- <nav class="nav-container">
-        <span id="logo">
-          sperq
-        </span>
-        {{#ifNotEquals view "false"}}
-        <span>
-          <div>
-            <form action="/ask" method="POST">
-              <span>
-                <select name="industry">
-                  {{#each industries}}
-                  <option value="{{this.industries}}">{{this.industries}}</option>
-                  {{/each}}
-                </select>
-              </span>
-                <input type="search" name="question" placeholder="Is it necessary to get a degree in X to become Y?" class="ask-bar">
-              <span><button>Ask</button></span>
-            </form>
-            </div>
-        </span>
-        {{/ifNotEquals}}
-        <span>
-          <div class="nav-container">
-            <li><a href="/"> Home </a> </li>
-            <li><a href="/dashboard"> Dashboard </a></li>
-            <li><a href="/feed"> Feed </a> </li>
-            <li>
-              <div>
-                <button><img src='{{ currentUserInfo.avatarUrl }}'id="avatar-profile"/></button>
-                <div class="dropdown-content-nav">
-                  <a href="#">My Profile</a>
-                  <a href="#">Settings</a>
-                  <a href="/logout">Log Out</a>
-                </div>
-              </div>
-            </li>
-          </div>
-        </span>
-        </nav> --}}
-
-        {{!-- <div class="nav-container-left">
-          <h2><a href="/">sperq</a></h2>
-        </div>
-        <div class="nav-container-right">
-          <li> <a href="/"> Home </a> </li>
-          <li> <a href="/dashboard"> Dashboard </a> </li>
-          <li> <a href="/feed"> Feed </a> </li>
-          <div class="dropdown-nav">
-            <button class="dropbtn-nav"> <img src="{{ currentUserInfo.avatarUrl }}" id="avatar-profile"/></button>
-            <div class="dropdown-content-nav">
-              <a href="#">My Profile</a>
-              <a href="#">Settings</a>
-              <a href="/logout">Log Out</a>
-            </div>
-          </div>
-        </div> --}}
-        
-        {{!-- {{else}}
-        <nav class="nav-container">
-          <li> <a href="/signup"> Sign Up </a> </li>
-          <li> <a href="/"> Log In </a> </li>
-        </nav>
-      {{/if}} --}}
     </header>
     {{{body}}}
     <div id="domainName" style="display:none">http://localhost:3000/</div>

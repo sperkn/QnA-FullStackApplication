@@ -20,7 +20,50 @@
   </div>
 
 {{else}}
-<div id="container">
+<div class="pure-g">
+  <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
+  <div class="pure-u-6-24 pure-u-md-6-24 pure-u-lg-6-24 pure-u-xl-6-24 center-items">
+    <form action="/" method="POST" class="form-border pure-form pure-form-stacked">
+      <fieldset>
+        <legend>Log In</legend>
+        {{#if errorMessage}}
+        <p class="error-message">
+        {{ errorMessage }}
+        </p>
+        {{/if}}
+      {{!-- <div class="pure-g"> --}}
+        {{!-- <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2"> --}}
+          <span class="pure-form-message">Recommended Option</span>
+          <div class="layout-items">
+            <a href="/auth/linkedin"><img src="/images/sign-in-small-default.png"></a> 
+          </div>
+          {{!-- <span class="pure-form-message">This is the recommended option</span> --}}
+        {{!-- </div> --}}
+        {{!-- <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2"> --}}
+          <span class="pure-form-message layout-items">OR</span>
+          <span class="pure-form-message layout-items">Log in with your sperq account</span>
+
+          <label for="email" class="su-padding-items">Email</label>
+          <div class="container"><input id="email" type="email" name="email" placeholder="Email"></div>
+          {{!-- <span class="pure-form-message">This is a required field.</span> --}}
+
+          <label for="password" class="su-padding-items">Password</label>
+          <div class="container"><input id="password" type="password" name="password" placeholder="Password"></div>
+
+          <label for="remember" class="pure-checkbox su-padding-items">
+          <input id="remember" type="checkbox"> Remember me
+          </label>
+
+          <button type="submit" class="button-xlarge pure-button pure-button-primary">Log In</button>
+        {{!-- </div> --}}
+      {{!-- </div> --}}
+      </fieldset>
+    </form>
+  </div>
+  <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
+</div>
+
+{{!-- <div id="container">
 <div id="login-container">
   <h2> Log In </h2>
 
@@ -56,16 +99,17 @@
     </a>
   </p>
 </div>
-</div>
+</div> --}}
+
  <footer>
     <ul class="footer-container">
-      <li>About</li>
-      <li>Team</li>
-      <li>Careers</li>
-      <li>Terms</li>
-      <li>Help</li>
+      <li><button class="button-small pure-button">About</button></li>
+      <li><button class="button-small pure-button">Team</button></li>
+      <li><button class="button-small pure-button">Careers</button></li>
+      <li><button class="button-small pure-button">Terms</button></li>
+      <li><button class="button-small pure-button">Help</button></li>
     </ul>
-    <div class="footer-container">
+    <div class="footer-container layout-items">
       <p> Made with &hearts; by Sperkn Labs, LLC. </p>
     </div>
   </footer>

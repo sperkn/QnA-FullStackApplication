@@ -1,41 +1,44 @@
-<h2> Join Us! </h2>
-
-{{#if errorMessage}}
+{{!-- {{#if errorMessage}}
   <p class="error-message">
     {{ errorMessage }}
   </p>
-{{/if}}
+{{/if}} --}}
 
-<form action="/signup" method="post">
-  <div>
-    <label for="firstName-input"> First Name </label>
-    <input type="text" name="firstName" id="firstName-input"
-      placeholder="">
-  </div>
-  <div>
-    <label for="lastName-input"> Last Name </label>
-    <input type="text" name="lastName" id="lastName-input"
-      placeholder="">
-  </div>
-  <div>
-    <label for="email-input"> Email </label>
-    <input type="email" name="email" id="email-input"
-      placeholder="">
-  </div>
+<div class="pure-g">
+  <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
+  <div class="pure-u-6-24 pure-u-md-6-24 pure-u-lg-6-24 pure-u-xl-6-24 center-items">
+    <form action="/signup" method="POST" class="pure-form pure-form-stacked">
+      <fieldset>
+        <legend>Sign Up</legend>
+        {{#if errorMessage}}
+        <p class="error-message">
+        {{ errorMessage }}
+        </p>
+        {{/if}}
 
-  <div>
-    <label for="password-input"> Password </label>
-    <input type="password" name="password" id="password-input"
-      placeholder="">
-    <span><p>Minimum 8 characters</p></span>
+        <label for="firstName" class="su-padding-items">First Name</label>
+        <div class="container"><input id="first Name" type="text" name="firstName" placeholder="First Name"></div>
+        {{!-- <span class="pure-form-message">This is a required field.</span> --}}
+
+        <label for="lastName" class="su-padding-items">Last Name</label>
+        <div class="container"><input id="lastName" type="text" name="lastName" placeholder="Last Name"></div>
+        {{!-- <span class="pure-form-message">This is a required field.</span> --}}
+
+        <label for="email" class="su-padding-items">Email</label>
+        <div class="container"><input id="email" type="email" name="email" placeholder="Email"></div>
+        {{!-- <span class="pure-form-message">This is a required field.</span> --}}
+
+        <label for="password" class="su-padding-items">Password</label>
+        <div class="container"><input id="password" type="password" name="password" placeholder="Password"></div>
+
+        <button type="submit" class="button-xlarge pure-button pure-button-primary">Join Now</button>
+
+      </fieldset>
+    </form>
+    
+    <legend class="su-padding-items">Already have a LinkedIn or Sperk account?</legend>
+    <a href="/"><button type="" class="button-large pure-button pure-button-primary">Log in</button></a>
+    
   </div>
-
-  <button> Join Now </button>
-</form>
-
-<p>
-  Already have a LinkedIn or Sperk account?
-  <a href="/login">
-    Log in 
-  </a>
-</p>
+  <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
+</div>

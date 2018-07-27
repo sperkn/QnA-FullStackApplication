@@ -49,18 +49,22 @@ table {
 
 /* GENERAL styles */
 
-body {
-  background: url(/images/background-image.png) no-repeat center center fixed; 
+#background {
+  background: no-repeat center center fixed; 
   background-size: cover;
+  background-image: url(/images/background-image.png);
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
+  /* opacity: 0.5; */
 }
 
 /* header {
   background-color: #4F86C6;
 } */
 
-footer {
+/* footer {
   background-color: #4F86C6;
-}
+} */
 
 a {
   text-decoration: none;
@@ -83,6 +87,26 @@ a {
 .left-items {
   text-align: left;
   /* padding-top: 1.0em; */
+}
+
+.general-template-style {
+background: rgba(255,255,255)
+}
+
+.button-xsmall {
+  font-size: 70%;
+}
+
+.button-small {
+  font-size: 85%;
+}
+
+.button-large {
+  font-size: 110%;
+}
+
+.button-xlarge {
+  font-size: 125%;
 }
 
 /* LAYOUT.HBS styles */
@@ -183,6 +207,23 @@ nav img {
 
 /* *********END LAYOUT STYLING********** */
 
+
+/* *********BEGIN SIGN-UP STLYING************* */
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+.align-center {
+  text-align: center;
+  display:block;
+}
+
+.su-padding-items {
+  padding-top: 1em;
+}
+
+/* *********END SIGN-UP STLYING************* */
 
 /* LOG-IN / INDEX.HBS styles */
 
