@@ -11,8 +11,21 @@ const User = require('../models/user');
 
 const router = express.Router();
 const bcryptSalt = 10;
+const LINKEDIN_CLIENT_ID = process.env.LINKEDIN_CLIENT_ID;
+const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
+
 router.use(passport.initialize());
 router.use(passport.session());
+
+
+// middleware for using LinkedIn API to login with linkedin credentials
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 const auth = express();
 
@@ -78,18 +91,15 @@ router.get('/login', (req, res, next) => {
   });
 });
 
-// middleware for using LinkedIn API to login with linkedin credentials
-passport.serializeUser(function(user, cb) { cb(null, user); });
-passport.deserializeUser(function(obj, cb) { cb(null, obj);  });
 
 
 passport.use(new LinkedInStrategy({
-  clientID: process.env.LINKEDIN_CLIENT_ID,
-  clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+  clientID: LINKEDIN_CLIENT_ID,
+  clientSecret: LINKEDIN_CLIENT_SECRET,
   callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
-  scope: ['r_emailaddress', 'r_basicprofile'],
-  state: true
-}, function(accessToken, refreshToken, profile, done) {
+  scope: ['r_basicprofile', 'r_emailaddress'],
+  passReqToCallback: true
+}, function(req, accessToken, refreshToken, profile, done) {
     req.session.accessToken = accessToken;
   // asynchronous verification, for effect...
   process.nextTick(function () {
@@ -134,18 +144,27 @@ passport.use(new LinkedInStrategy({
   //   else {return done(err, newUser);}
   // })
     console.log("profile", profile);
+    req.session.currentUser = profile;
     return done(null, profile);
   });
 }));
 
-// routes to handle linkedin log-in
+// GET /auth/linkedin
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in Linkedin authentication will involve
+//   redirecting the user to linkedin.com.  After authorization, Linkedin
+//   will redirect the user back to this application at /auth/linkedin/callback
 router.get('/auth/linkedin',
   passport.authenticate('linkedin'));
 
+// GET /auth/linkedin/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
 router.get('/auth/linkedin/callback',
   passport.authenticate('linkedin', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/');
   });
 
@@ -153,20 +172,6 @@ router.get('/auth/linkedin/callback',
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login');
   }
-
-// router.get('/auth/linkedin',
-//   passport.authenticate('linkedin'),
-//   function(req, res){
-//     // The request will be redirected to LinkedIn for authentication, so this
-//     // function will not be called.
-// });
-
-// router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
-//     // failureFlash: true
-// })
-// );
 
 //log-in post route normal user
 router.post('/', (req, res, next) => {
@@ -204,15 +209,6 @@ router.get('/logout', (req, res, next) => {
       next(err);
       return;
     })
-
-  // req.session.destroy((err) => {
-  //   if (err) {
-  //     next(err);
-  //     return;
-  //   }
-
-  //   res.redirect('/');
-  // });
 
 });
 
