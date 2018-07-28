@@ -31,15 +31,10 @@
         {{ errorMessage }}
         </p>
         {{/if}}
-      {{!-- <div class="pure-g"> --}}
-        {{!-- <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2"> --}}
           <span class="pure-form-message">Recommended Option</span>
           <div class="layout-items">
             <a href="/auth/linkedin"><img src="/images/sign-in-small-default.png"></a> 
           </div>
-          {{!-- <span class="pure-form-message">This is the recommended option</span> --}}
-        {{!-- </div> --}}
-        {{!-- <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2"> --}}
           <span class="pure-form-message layout-items">OR</span>
           <span class="pure-form-message layout-items">Log in with your sperq account</span>
 
@@ -55,62 +50,31 @@
           </label>
 
           <button type="submit" class="button-xlarge pure-button pure-button-primary">Log In</button>
-        {{!-- </div> --}}
-      {{!-- </div> --}}
       </fieldset>
     </form>
   </div>
   <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
 </div>
 
-{{!-- <div id="container">
-<div id="login-container">
-  <h2> Log In </h2>
-
-  {{#if errorMessage}}
-  <p class="error-message">
-    {{ errorMessage }}
-  </p>
-  {{/if}}
-
-  <div id="login-items">
-      <a href="/auth/linkedin">
-        <img src="/images/sign-in-small-default.png"> 
-      </a>
-    <form action="/" method="post">
-      <div>
-        <label for="email-input"> Email </label>
-        <input type="email" name="email" id="email-input" placeholder="">
-      </div>
-
-      <div>
-        <label for="password-input"> Password </label>
-        <input type="password" name="password" id="password-input" placeholder="">
-      </div>
-
-      <button> Log In </button>
-    </form>
-  </div>
-
-  <p>
+  {{!-- <p>
     Or create a Sperk account - 
     <a href="/signup">
       Join
     </a>
-  </p>
-</div>
-</div> --}}
+  </p> --}}
+
 
  <footer>
     <ul class="footer-container">
-      <li><button class="button-small pure-button">About</button></li>
-      <li><button class="button-small pure-button">Team</button></li>
-      <li><button class="button-small pure-button">Careers</button></li>
-      <li><button class="button-small pure-button">Terms</button></li>
-      <li><button class="button-small pure-button">Help</button></li>
+      <li><a href="#"><button class="button-small pure-button">About</button></a></li>
+      <li><a href="#"><button class="button-small pure-button">Team</button></a></li>
+      <li><a href="#"><button class="button-small pure-button">Careers</button></a></li>
+      <li><a href="#"><button class="button-small pure-button">Terms</button></a></li>
+      <li><a href="#"><button class="button-small pure-button">Help</button></a></li>
     </ul>
     <div class="footer-container layout-items">
-      <p> Made with &hearts; by Sperkn Labs, LLC. </p>
+      <p> Sperkn Labs, LLC. </p>
+      {{!-- Made with &hearts; by  --}}
     </div>
   </footer>
 {{/if}}

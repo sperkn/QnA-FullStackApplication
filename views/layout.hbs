@@ -7,35 +7,40 @@
   </head>
   <body id="background">
     <header>
-      {{!-- <a href="/"><img src="/images/sperq-logo.png"> </a> --}}
-      {{!-- {{#if isUserLoggedIn }} --}}
       <div id="nav-bar" class="pure-g">
-        <div class="pure-u-5-24 pure-u-md-5-24 pure-u-lg-5-24 pure-u-xl-5-24 layout-items"><a href="/"><img src="/images/sperq-logo.png" id="logo"></a></div>
+        <div class="pure-u-4-24 pure-u-md-4-24 pure-u-lg-4-24 pure-u-xl-4-24 layout-items"><a href="/"><img src="/images/sperq-logo.png" id="logo"></a></div>
         {{#if isUserLoggedIn }}
           {{#ifNotEquals view "false"}}
-          <div class="pure-u-1-12 pure-u-md-1-12 pure-u-lg-1-12 pure-u-xl-1-12 right-items layout-items">Industry</div>
-          <div class="pure-u-3-8 pure-u-md-3-8 pure-u-lg-3-8 pure-u-xl-3-8 center-items layout-items">Question Input</div>
-          <div class="pure-u-2-24 pure-u-md-2-24 pure-u-lg-2-24 pure-u-xl-2-24 left-items layout-items"><button><a href="/ask">Ask</a></button></div>
+            <div class="pure-u-14-24 pure-u-md-14-24 pure-u-lg-14-24 pure-u-xl-14-24 layout-items">
+              <form autocomplete="off" action="/ask" method="POST">
+                <div class="pure-g">
+                  <div class="autocomplete pure-u-4-24 pure-u-md-4-24 pure-u-lg-4-24 pure-u-xl-4-24 right-items"><input id="myIndustry" type="text" name="industry" placeholder="Industry" class="input-industry"></div>
+                  <div class="pure-u-17-24 pure-u-md-17-24 pure-u-lg-17-24 pure-u-xl-17-24 center-items"><input type="text" name="question" placeholder="Ask and you shall receive..." class="input-ask"></div>
+                  <div class="pure-u-3-24 pure-u-md-3-24 pure-u-lg-3-24 pure-u-xl-3-24"><a href="/ask"></a><button class="button-ask pure-button">Ask</button></a></div>
+                </div>
+              </form>
+            </div>
+          
           {{else}}
           <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2"></div>
           {{/ifNotEquals}}
         <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4">
           <div class="pure-g">
-            <div class="pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 center-items layout-items"><a href="/dashboard">Dashboard</a></div>
-            <div class="pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 center-items layout-items"><a href="/feed">Feed</a></div>
+            <div class="pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 right-items layout-items"><a href="/dashboard"><button class="pure-button pure-button-primary">Dashboard</button></a></div>
+            <div class="pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 center-items layout-items"><a href="/feed"><button class="pure-button pure-button-primary">Feed</button></a></div>
             <div class="pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 center-items layout-items">
               <div class="pure-menu pure-menu-horizontal">
                 <ul class="pure-menu-list">
                   <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                     <a href="#" id="menuLink1" class="pure-menu-link">
-                      {{!-- <img src="{{currentUserInfo.avatarUrl }}" class="avatar-profile"> --}}
+                      {{!-- <img src="{{currentUserInfo.avatarUrl }}" class=""> --}}
                       Menu
-                      </a>
-                  <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">My Profile</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-                    <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Log Out</a></li>
-                  </ul>
+                    </a>
+                    <ul class="pure-menu-children">
+                      <li class="pure-menu-item"><a href="#" class="pure-menu-link">My Profile</a></li>
+                      <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
+                      <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Log Out</a></li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -51,7 +56,7 @@
       </div>
     </header>
     {{{body}}}
-    <div id="domainName" style="display:none">http://localhost:3000/</div>
+    {{!-- <div id="domainName" style="display:none">http://localhost:3000/</div> --}}
     <script src='/javascripts/script.js' />
   </body>
 </html>

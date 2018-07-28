@@ -53,7 +53,7 @@ table {
   background: no-repeat center center fixed; 
   background-size: cover;
   background-image: url(/images/background-image.png);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   background-blend-mode: lighten;
   /* opacity: 0.5; */
 }
@@ -109,6 +109,95 @@ background: rgba(255,255,255)
   font-size: 125%;
 }
 
+/* ******BEGIN STYLING FOR INDUSTRIES INPUTS(Autocomplete & Question) & ASK BUTTON******  */
+
+* { box-sizing: border-box; }
+body {
+  font: 16px Arial; 
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.input-ask {
+  width:98%;
+  height:84%;
+}
+
+.input-industry {
+  width:98%;
+  height:84%;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  /* width: 100%; */
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9; 
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+.button-ask,
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-ask {
+  background: rgb(143, 73, 222);
+}
+/* ******END STYLING FOR INDUSTRIES INPUTS(Autocomplete & Question) & ASK BUTTON******  */
+
 /* LAYOUT.HBS styles */
 
 #nav-bar {
@@ -121,32 +210,10 @@ background: rgba(255,255,255)
 
 #avatar-profile {
   object-fit: cover;
-  border-radius: 0.1em;
-  width: 0.5em;
-  height: 0.5em;
+  border-radius:10px;
+  width: 30px;
+  height: 30px;
 }
-
-/* .nav-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-
-}
-
-.nav-container-left {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: center;
-}
-
-.nav-container-right {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-} */
 
 nav li {
    list-style-type: none;

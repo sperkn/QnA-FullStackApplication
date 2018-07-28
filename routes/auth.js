@@ -201,7 +201,6 @@ router.get('/logout', (req, res, next) => {
     res.redirect('/');
     return;
   }
-
   req.session.destroy()
     .then(res.redirect('/'))
     .catch(err => {
@@ -209,7 +208,6 @@ router.get('/logout', (req, res, next) => {
       next(err);
       return;
     })
-
 });
 
 module.exports = router;

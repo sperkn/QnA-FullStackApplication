@@ -57,20 +57,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  // Adds user domain to be accessed from hbs to be used with axios on heroku 
-  req.userDomain = process.env.DOMAIN;
-  if(req.user){
-  User.findById(req.user._id)
-    .then(user => {
-      req.user = user;
-    });
-  }
-  // Allows request to be accessed from handlebars
-  app.locals.req = req;
-  // console.log(req.url)
-  next();
-});
+// app.use((req, res, next) => {
+//   // Adds user domain to be accessed from hbs to be used with axios on heroku 
+//   req.userDomain = process.env.DOMAIN;
+//   if(req.user){
+//   User.findById(req.user._id)
+//     .then(user => {
+//       req.user = user;
+//     });
+//   }
+//   // Allows request to be accessed from handlebars
+//   app.locals.req = req;
+//   // console.log(req.url)
+//   next();
+// });
 
 // Passport Middleware Configuration
 const passport = require('./routes/auth');
@@ -90,7 +90,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.locals.title = 'sperq - Connecting You With Experts';
+app.locals.title = 'sperq - connecting you with experts';
 
 //route connections
 const index = require('./routes/index');

@@ -44,7 +44,6 @@ router.post('/ask', (req, res, next) => {
     })
 });
 
-// NEED TO FIX!!!!!
 // route for showing the question and any/all answers associated
 router.get('/question/:id', (req, res, next) => {
   const questionId = req.params.id;
@@ -100,8 +99,6 @@ router.get('/delete/:id', (req, res, next) => {
     }
     else {
       question.remove();
-      // res.redirect('/dashboard')
-      // res.render('user/dashboard')
     }
   })
   .then(res.redirect('/dashboard'))
@@ -110,15 +107,7 @@ router.get('/delete/:id', (req, res, next) => {
     next(err);
     return;
   })
-    // AndRemove(questionId)
-    // .then(res.redirect('/dashboard'))
-    // .catch(err => {
-    //   console.log(err);
-    //   next(err);
-    //   return;
-    // })
 });
-
 
 router.get('/dashboard', (req, res, next) => {
   let user = req.session.currentUser._id;
