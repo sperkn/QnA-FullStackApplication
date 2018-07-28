@@ -54,7 +54,7 @@ router.get('/community/question/:id', (req,res, next) =>{
         next(err);
         return;
       })
-})
+});
 
 router.post('/answer', (req, res, next) => {
   const user_id = req.session.currentUser._id;
@@ -77,6 +77,10 @@ router.post('/answer', (req, res, next) => {
       });
       return;
     })
-})
+});
+
+router.post('/community/like/:id',(req, res, next) => {
+  const user_id = req.session.currentUser._id;
+});
 
 module.exports = router;

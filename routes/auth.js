@@ -197,7 +197,9 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/logout', (req, res, next) => {
+  console.log("im here")
   if (!req.session.currentUser) {
+    console.log("im here2")
     res.redirect('/');
     return;
   }

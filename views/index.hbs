@@ -1,28 +1,29 @@
 <!-- views/index.hbs -->
 {{#if isUserLoggedIn }}
-  <div id="ask-header">
-    <h1> Hello {{ currentUserInfo.firstName }}, ask a question...</h1>
-  </div>
+  {{!-- <div id="ask-header"> --}}
+<div class="pure-g">
+  <div class="pure-u-11-24 pure-u-md-11-24 pure-u-lg-11-24 pure-u-xl-11-24 center-items layout-items"><h2> Hello {{ currentUserInfo.firstName }}, ask a question...</h2></div>
+  <div class="pure-u-13-24 pure-u-md-13-24 pure-u-lg-13-24 pure-u-xl-13-24"></div>
+</div>
 
-  <div id="ask-input">
-  <form action="/ask" method="POST">
-    <select name="industry">
-      <option value="law">Law</option>
-      <option value="engineering">Engineering</option>
-      <option value="science">Science</option>
-      <option value="math">Math</option>
-    </select>
-    <span>
-      <input type="search" name="question" placeholder="Is it necessary to get a degree in X to become Y?" class="ask-bar">
-      <button>Ask</button>
-    </span>
-  </form>
+<div class="pure-g layout-items">
+  <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4 layout-items"></div>
+  <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2 layout-items">
+    <form autocomplete="off" action="/ask" method="POST">
+      <div class="pure-g">
+        <div class="autocomplete pure-u-4-24 pure-u-md-4-24 pure-u-lg-4-24 pure-u-xl-4-24 right-items"><input id="myIndustry" type="text" name="industry" placeholder="Industry" class="input-industry-main"></div>
+        <div class="pure-u-17-24 pure-u-md-17-24 pure-u-lg-17-24 pure-u-xl-17-24 center-items"><input type="text" name="question" placeholder="Ask and you shall receive..." class="input-ask-main"></div>
+        <div class="pure-u-3-24 pure-u-md-3-24 pure-u-lg-3-24 pure-u-xl-3-24"><a href="/ask"></a><button class="button-large button-ask pure-button">Ask</button></a></div>
+      </div>
+    </form>
   </div>
+  <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4"></div>
+</div>
 
 {{else}}
-<div class="pure-g">
+<div class="pure-g layout-items">
   <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
-  <div class="pure-u-6-24 pure-u-md-6-24 pure-u-lg-6-24 pure-u-xl-6-24 center-items">
+  <div class="pure-u-6-24 pure-u-md-6-24 pure-u-lg-6-24 pure-u-xl-6-24 layout-items center-items background-auth">
     <form action="/" method="POST" class="form-border pure-form pure-form-stacked">
       <fieldset>
         <legend>Log In</legend>
@@ -55,14 +56,6 @@
   </div>
   <div class="pure-u-9-24 pure-u-md-9-24 pure-u-lg-9-24 pure-u-xl-9-24"></div>
 </div>
-
-  {{!-- <p>
-    Or create a Sperk account - 
-    <a href="/signup">
-      Join
-    </a>
-  </p> --}}
-
 
  <footer>
     <ul class="footer-container">
