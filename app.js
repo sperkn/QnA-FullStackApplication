@@ -15,7 +15,7 @@ const app = express();
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/QnA-WebApp')
+  .connect('mongodb://localhost:27017/QnA-WebApp', { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
