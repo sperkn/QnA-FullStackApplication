@@ -123,23 +123,26 @@ router.get('/dashboard', (req, res, next) => {
   });
 });
 
-router.get('/feed', (req, res, next) => {
-  Question.find()
-  .populate('user_id')
-  .sort({createdAt:-1})
-  .then(communityQuestions => {
-    res.render('user/feed', {
-      questions: communityQuestions
-    })
-  })
-  .catch(err => {
-    console.log(err);
-    next(err);
-    return;
-  })
-});
+// router.get('/feed', (req, res, next) => {
+//   Question.find()
+//   .populate('user_id')
+//   .sort({createdAt:-1})
+//   .then(communityQuestions => {
+//     res.render('user/feed', {
+//       questions: communityQuestions
+//     })
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     next(err);
+//     return;
+//   })
+// });
 
-router.get('/profile', (req, res, next) => {
+router.get('/user/profile/:id', (req, res, next) => {
+  const user_id = req.session.currentUser._id;
+
+  User.findById(user_id)
   res.render('user/profile');
 });
 

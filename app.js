@@ -96,13 +96,13 @@ app.locals.title = 'sperq - connecting you with experts';
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const communityRoutes = require('./routes/community');
+const feedRoutes = require('./routes/feed');
 const likesRoutes = require('./routes/likes');
 
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/', userRoutes);
-app.use('/', communityRoutes);
+app.use('/', feedRoutes);
 app.use('/', likesRoutes);
 
 module.exports = app;

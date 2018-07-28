@@ -14,7 +14,23 @@ router.use((req, res, next) => {
   res.redirect('/');
 });
 
-router.get('/community/question/:id', (req,res, next) =>{
+router.get('/feed', (req, res, next) => {
+  Question.find()
+  .populate('user_id')
+  .sort({createdAt:-1})
+  .then(communityQuestions => {
+    res.render('user/feed', {
+      questions: communityQuestions
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    next(err);
+    return;
+  })
+});
+
+router.get('/feed/question/:id', (req,res, next) =>{
   const questionId = req.params.id;
 
     Answer.find({question_id: questionId})
@@ -25,7 +41,7 @@ router.get('/community/question/:id', (req,res, next) =>{
           Question.findById(questionId)
             .populate('user_id')
             .then(question => {
-            res.render('community/question', {
+            res.render('feed/question', {
               thePost: question})
             })
             .catch(err => {
@@ -38,7 +54,7 @@ router.get('/community/question/:id', (req,res, next) =>{
           Question.findById(questionId)
             .populate('user_id')
             .then(question => {
-              res.render('community/question', {
+              res.render('feed/question', {
               thePost: question,
               theAnswers: answers})
             })
@@ -69,7 +85,7 @@ router.post('/answer', (req, res, next) => {
   const userAnswer = new Answer(answerSubmission);
 
   userAnswer.save()
-    .then(res.redirect(`/community/question/${question_id}`))
+    .then(res.redirect(`/feed/question/${question_id}`))
     .catch(err => {
       console.log(err);
       res.render('/', {
@@ -79,7 +95,7 @@ router.post('/answer', (req, res, next) => {
     })
 });
 
-router.post('/community/like/:id',(req, res, next) => {
+router.post('/feed/like/:id',(req, res, next) => {
   const user_id = req.session.currentUser._id;
 });
 

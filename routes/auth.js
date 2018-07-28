@@ -13,6 +13,7 @@ const router = express.Router();
 const bcryptSalt = 10;
 const LINKEDIN_CLIENT_ID = process.env.LINKEDIN_CLIENT_ID;
 const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
+const callbackURL = process.env.callbackURL
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -96,56 +97,77 @@ router.get('/login', (req, res, next) => {
 passport.use(new LinkedInStrategy({
   clientID: LINKEDIN_CLIENT_ID,
   clientSecret: LINKEDIN_CLIENT_SECRET,
-  callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
+  callbackURL: callbackURL,
   scope: ['r_basicprofile', 'r_emailaddress'],
   passReqToCallback: true
 }, function(req, accessToken, refreshToken, profile, done) {
     req.session.accessToken = accessToken;
   // asynchronous verification, for effect...
   process.nextTick(function () {
-    // const linkedinId = profile.id;
-    // const firstName = profile.firstname;
-    // const lastName = profile.lastname;
-    // const email = profile.emailaddress;
+     // const linkedinId = profile._id;
+    // const firstName = profile.name.givenName;
+    // const lastName = profile.name.familyName;
+    // const email = profile.emails[0].value;
     // const headline = profile.headline;
     // const position = profile.positions;
     // const profileUrl = profile.publicprofileurl;
     // const avatarUrl = profile.pictureurl;
+    const {
+      emailAddress:email, 
+      firstName,
+      lastName,
+      formattedName:displayName,
+      headline,
+      id:linkedinId,
+      industry,
+      numConnections:linkedinConnections,
+      pictureUrl:avatarUrl,
+      publicProfileUrl
+    } = profile._json;
 
-  // const {
-  //   id:linkedinId, 
-  //   "first-name":firstName,
-  //   "last-name":lastName, 
-  //   "email-address":email,
-  //   headline,
-  //   positions:position,
-  //   "public-profile-url":profileUrl,
-  //   "picture-url":avatarUrl} = profile;
     
-  // let newUser = new User({
-  //   linkedinId,
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   headline,
-  //   position,
-  //   profileUrl,
-  //   avatarUrl,
-  //   account: "EXPERT"
-  // });
+  let newUser = new User({
+    email,
+    firstName,
+    lastName,
+    displayName,
+    headline,
+    linkedinId,
+    industry,
+    linkedinConnections,
+    avatarUrl,
+    publicProfileUrl,
+    account: "EXPERT"
+  });
 
-  // User.find({'linkedinId': linkedinId}, (err, userCheck)=> {
-  //   if (err) { res.status(500).send('Something broke!') }
-  //   if (!userCheck.length) {
+  User.find({'linkedinId': linkedinId}, (err, userCheck)=> {
+    if (err) { res.status(500).send('Something broke!') }
+    if (!userCheck.length) {
+        newUser.save(newUser, (err) => {
+          req.session.currentUser = newUser;
+          return done(err, newUser);
+        })
+      }
+    else {return done(err, newUser);}
+  })
+
+  
+
+  // User.find({'linkedinId': linkedinId})
+  //   .then(userCheck => {
+  //     if(!userCheck.length) {
   //       newUser.save(newUser, (err) => {
-  //           return done(err, newUser);
+  //         return done(err, newUser);
   //       })
   //     }
-  //   else {return done(err, newUser);}
-  // })
-    console.log("profile", profile);
-    req.session.currentUser = profile;
-    return done(null, profile);
+  //     else {return done(err, newUser);}
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+
+    // console.log("profile", profile);
+    // return done(null, profile);
   });
 }));
 

@@ -13,7 +13,7 @@
         <img src={{this.avatarUrl}} class="avatar-question">
         {{/with}}
       </div>
-      <div class="pure-u-3-4 pure-u-md-3-4 pure-u-lg-3-4 pure-u-xl-3-4">
+      <div class="pure-u-3-4 pure-u-md-3-4 pure-u-lg-3-4 pure-u-xl-3-4 border-left">
         <div class="pure-g">
           {{#with user_id}}
           <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24">{{this.firstName}} {{this.lastName}}</div>
@@ -27,7 +27,7 @@
           {{/with}}
         </div>
         <div class="pure-g question-info">
-          <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24"><a href="/community/question/{{this._id}}">{{this.question}}</a></div>
+          <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24"><a href="/feed/question/{{this._id}}">{{this.question}}</a></div>
           <div class="pure-u-5-24 pure-u-md-5-24 pure-u-lg-5-24 pure-u-xl-5-24"></div>
         </div>
         <div class="pure-g question-info">

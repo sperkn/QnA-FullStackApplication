@@ -117,6 +117,10 @@ background: rgba(255,255,255)
   border-radius: .6em;
 }
 
+.border-left {
+  border-left: 0.1em solid rgb(143, 73, 222);
+}
+
 /* *****BEGIN SIGN-UP & LOG-IN STYLING***** */
 .background-auth {
 background: #FFF;
