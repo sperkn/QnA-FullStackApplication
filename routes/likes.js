@@ -3,8 +3,8 @@ const mongoose     = require('mongoose');
 const User = require('../models/user');
 const Question = require('../models/question');
 const Answer = require('../models/answer');
-const QLikes = require('../models/qlike');
-const ALikes = require('../models/alike');
+const QLikes = require('../models/qLike');
+const ALikes = require('../models/aLike');
 
 const router = express.Router();
 
