@@ -69,6 +69,7 @@ router.get('/question/:id', (req, res, next) => {
       // console.log(answers)
       if(answers.length===0) {
         Question.findById(questionId)
+          .populate('user_id')
           .then(question => {
           res.render('user/question', {
             thePost: question})
@@ -81,6 +82,7 @@ router.get('/question/:id', (req, res, next) => {
         }
       else {
         Question.findById(questionId)
+          .populate('user_id')
           .then(question => {
             res.render('user/question', {
             thePost: question,

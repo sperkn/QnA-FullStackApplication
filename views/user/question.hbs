@@ -21,28 +21,31 @@
       <div class="pure-u-3-4 pure-u-md-3-4 pure-u-lg-3-4 pure-u-xl-3-4 border-left left-padding">
         <div class="pure-g">
           {{!-- {{#with user_id}} --}}
-          <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24">{{thePost.user_id.firstName}} {{thePost.user_id.lastName}}</div>
+          <div class="pure-u-1-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1">{{thePost.user_id.firstName}} {{thePost.user_id.lastName}}</div>
           {{!-- {{/with}} --}}
-          <div class="pure-u-1-8 pure-u-md-1-8 pure-u-lg-1-8 pure-u-xl-1-8"><a href="feed/like/{{this._id}}"><button class="button-green left-items"><img src="/images/baseline-thumb_up-24px.svg"></button></a></div>
-          <div class="pure-u-1-12 pure-u-md-1-12 pure-u-lg-1-12 pure-u-xl-1-12"><a href="feed/flag/{{this._id}}"><button class="button-red"><img src="/images/outlined-flag-24px.svg"></button></a></div>
-        </div>
+          {{!-- <div class="pure-u-1-8 pure-u-md-1-8 pure-u-lg-1-8 pure-u-xl-1-8"><a href="feed/like/{{this._id}}"><button class="button-green left-items"><img src="/images/baseline-thumb_up-24px.svg"></button></a></div>
+          <div class="pure-u-1-12 pure-u-md-1-12 pure-u-lg-1-12 pure-u-xl-1-12"><a href="feed/flag/{{this._id}}"><button class="button-red"><img src="/images/outlined-flag-24px.svg"></button></a></div> --}}
+        {{!-- </div> --}}
         <div class="pure-g question-info">
           {{!-- {{#with user_id}} --}}
           <div class="pure-u-12-24 pure-u-md-12-24 pure-u-lg-12-24 pure-u-xl-12-24">{{thePost.user_id.headline}}</div>
           {{!-- {{/with}} --}}
         </div>
         <div class="pure-g question-info">
-          <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24"><a href="/feed/question/{{this._id}}">{{thePost.question}}</a></div>
+          <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24">{{thePost.question}}</div>
           <div class="pure-u-5-24 pure-u-md-5-24 pure-u-lg-5-24 pure-u-xl-5-24"></div>
         </div>
         <div class="pure-g question-info">
-          <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4">Likes: {{thePost.likes}}</div>
-          <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4">Answers: {{thePost.answers}}</div>
-          <div class="pure-u-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-2">Status: {{thePost.status}}</div>
+          <div class="pure-u-1-1 pure-u-md-1-1 pure-u-lg-1-1 pure-u-xl-1-1">Likes: {{thePost.likes}}</div>
+        </div>
+        <div class="pure-g question-info">
+          <div class="pure-u-1-1 pure-u-md-1-1 pure-u-lg-1-1 pure-u-xl-1-1 padding-left">Answers: {{thePost.answers}}</div>
+        </div>
+        <div class="pure-g question-info">
+          <div class="pure-u-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 padding-left">Status: {{thePost.status}}</div>
         </div>
       </div>
     </div>
-    {{/each}}
   </div>
   <div class="pure-u-8-24 pure-u-md-8-24 pure-u-lg-8-24 pure-u-xl-8-24"></div>
 </div>
