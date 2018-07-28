@@ -44,6 +44,21 @@ router.post('/ask', (req, res, next) => {
     })
 });
 
+// route for showing the user's dashboard/questions
+router.get('/dashboard', (req, res, next) => {
+  let user = req.session.currentUser._id;
+  Question.find({user_id: user}, (err, userQuestions) => { 
+    if (err) {
+      console.log(err);
+      next(err);
+      return;
+    }
+    res.render('user/dashboard', {
+      questions: userQuestions
+    });
+  });
+});
+
 // route for showing the question and any/all answers associated
 router.get('/question/:id', (req, res, next) => {
   const questionId = req.params.id;
@@ -107,20 +122,6 @@ router.get('/delete/:id', (req, res, next) => {
     next(err);
     return;
   })
-});
-
-router.get('/dashboard', (req, res, next) => {
-  let user = req.session.currentUser._id;
-  Question.find({user_id: user}, (err, userQuestions) => { 
-    if (err) {
-      console.log(err);
-      next(err);
-      return;
-    }
-    res.render('user/dashboard', {
-      questions: userQuestions
-    });
-  });
 });
 
 // router.get('/feed', (req, res, next) => {

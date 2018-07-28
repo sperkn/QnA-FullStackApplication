@@ -1,4 +1,4 @@
-<div id="dashboard-container">
+<div id="dashboard-container" class="layout-items">
   <h2>Community Questions</h2>
 </div>
 
@@ -13,13 +13,13 @@
         <img src={{this.avatarUrl}} class="avatar-question">
         {{/with}}
       </div>
-      <div class="pure-u-3-4 pure-u-md-3-4 pure-u-lg-3-4 pure-u-xl-3-4 border-left">
+      <div class="pure-u-3-4 pure-u-md-3-4 pure-u-lg-3-4 pure-u-xl-3-4 border-left left-padding">
         <div class="pure-g">
           {{#with user_id}}
           <div class="pure-u-19-24 pure-u-md-19-24 pure-u-lg-19-24 pure-u-xl-19-24">{{this.firstName}} {{this.lastName}}</div>
           {{/with}}
-          <div class="pure-u-1-8 pure-u-md-1-8 pure-u-lg-1-8 pure-u-xl-1-8"><a href="feed/like/{{this._id}}"><img src="/images/baseline-thumb_up-24px.svg"></a></div>
-          <div class="pure-u-1-12 pure-u-md-1-12 pure-u-lg-1-12 pure-u-xl-1-12"><a href="feed/flag/{{this._id}}"><img src="/images/outlined-flag-24px.svg"></a></div>
+          <div class="pure-u-1-8 pure-u-md-1-8 pure-u-lg-1-8 pure-u-xl-1-8"><a href="feed/like/{{this._id}}"><button class="button-green left-items"><img src="/images/baseline-thumb_up-24px.svg"></button></a></div>
+          <div class="pure-u-1-12 pure-u-md-1-12 pure-u-lg-1-12 pure-u-xl-1-12"><a href="feed/flag/{{this._id}}"><button class="button-red"><img src="/images/outlined-flag-24px.svg"></button></a></div>
         </div>
         <div class="pure-g question-info">
           {{#with user_id}}

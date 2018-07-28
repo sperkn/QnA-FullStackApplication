@@ -119,6 +119,11 @@ background: rgba(255,255,255)
 
 .border-left {
   border-left: 0.1em solid rgb(143, 73, 222);
+  padding-right: 0.2em;
+}
+
+.left-padding {
+  padding-left: 1em;
 }
 
 /* *****BEGIN SIGN-UP & LOG-IN STYLING***** */
@@ -219,6 +224,22 @@ input[type=submit] {
 
 .button-success {
     background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-green {
+  background: rgb(28, 184, 65);
+  object-fit: cover;
+  border-radius:50%;
+  width: 2.1em;
+  height: 2.1em;
+}
+
+.button-red {
+  background: rgb(202, 60, 60);;
+  object-fit: cover;
+  border-radius:50%;
+  width: 2.1em;
+  height: 2.1em;
 }
 
 .button-ask {
